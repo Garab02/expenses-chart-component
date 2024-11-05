@@ -1,0 +1,16 @@
+$(document).ready(function(){
+    $.ajax({
+        url: '/data.json',
+        dataType: 'json',
+        error: function(){
+            console.log('JSON FAILED TO LOAD');
+        },
+        success:function(results){
+            const cartItemsList = document.getElementById('cartItemsList');
+
+            results.forEach(function(element) {
+                cartItemsList.insertAdjacentHTML('beforeend',"<li>" + element.day + ":" + + element.amount+ " </li>")
+            }); // end of forEach
+        }   // end of success fn
+    })   // end of Ajax call
+})  // end of $(document).ready() function
